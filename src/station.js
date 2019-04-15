@@ -16,18 +16,18 @@
  * thermometer.js and station.js. The address and the port are part of our simple 
  * application-level protocol
  */
-var protocol = require('./sensor-protocol');
+const protocol = require('./sensor-protocol');
 
 /*
  * We use a standard Node.js module to work with UDP
  */
-var dgram = require('dgram');
+const dgram = require('dgram');
 
 /* 
  * Let's create a datagram socket. We will use it to listen for datagrams published in the
  * multicast group by thermometers and containing measures
  */
-var s = dgram.createSocket('udp4');
+const s = dgram.createSocket('udp4');
 s.bind(protocol.PROTOCOL_PORT, function() {
   console.log("Joining multicast group");
   s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
